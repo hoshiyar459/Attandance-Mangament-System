@@ -1,6 +1,6 @@
 spring:
   data:
-    mongdb:
+    mongodb:
       host: localhost
       port: 27017
       database: "Attendance-System"

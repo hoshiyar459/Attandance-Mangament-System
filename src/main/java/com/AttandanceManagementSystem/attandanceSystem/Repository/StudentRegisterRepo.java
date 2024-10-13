@@ -4,7 +4,12 @@ import com.AttandanceManagementSystem.attandanceSystem.Entity.StudentRegistratio
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface StudentRegisterRepo extends MongoRepository<StudentRegistration , String> {
+
+     List<StudentRegistration> findByCourse(String course);
+
 
 }

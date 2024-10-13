@@ -1,6 +1,6 @@
 package com.AttandanceManagementSystem.attandanceSystem.Entity;
 
-
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,25 +12,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Document(collection = "StudentRegistration")
-@NoArgsConstructor
 @Data
 public class StudentRegistration {
     @Id
-   private String id ;
+    private String id;
+
+    public StudentRegistration() {
+        this.id = UUID.randomUUID().toString();
+    }
+
     @NonNull
-   private String FullName ;
+    private String FullName;
+
     @NonNull
-   private String gmail ;
+    private String gmail;
 
     @NonNull
     @Indexed(unique = true)
-   private String EnrollmentNumber ;
-    @NonNull
-   private String course ;
-    @NonNull
-   private String StudyYear ;
+    private String EnrollmentNumber;
 
-   List<Integer> attandanceList = new ArrayList();
+    @NonNull
+    private String course;
+
+    @NonNull
+    private String StudyYear;
+
+    List<Integer> attandanceList = new ArrayList();
 }

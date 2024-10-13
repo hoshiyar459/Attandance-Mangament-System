@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -30,5 +31,21 @@ public class StudentRegistrationService {
      public List<StudentRegistration> getall(){
          return studentRegisterRepo.findAll();
      }
+
+     public StudentRegistration findById(String id){
+         return studentRegisterRepo.findById(id).orElse(null);
+     }
+
+     public Boolean findByIdInBoolean(String id){
+          if(studentRegisterRepo.findById(id).isPresent()){
+               return true ;
+          }
+          return false ;
+     }
+
+     public List<StudentRegistration> findByCourse(String course){
+          return studentRegisterRepo.findByCourse(course);
+     }
+
 
 }
